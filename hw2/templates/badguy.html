@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badguy Server - Using External Resources</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .image-section {
+            text-align: center;
+        }
+        
+        .image-container {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        #displayed-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        #displayed-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .info-box {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .resource-list li {
+            padding: 10px;
+            background: #f9f9f9;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .resource-list li strong {
+            color: #e74c3c;
+        }
+        
+        .test-button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .test-button:hover {
+            background: #c0392b;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔴 Badguy Server</h1>
+        
+        <div class="warning-box">
+            <strong>⚠️ This server is using external resources from server.py!</strong>
+            <p>JavaScript and images are loaded from <code>http://server.local:5000</code></p>
+        </div>
+        
+        <div class="content">
+            <div class="info-box">
+                <h3>Cross-Server Resource Usage</h3>
+                <p>This page demonstrates using resources exposed by a different Flask server:</p>
+                
+                <h4>External Resources Used:</h4>
+                <ul class="resource-list">
+                    <li><strong>JavaScript:</strong> http://server.local:5000/js/app.js</li>
+                    <li><strong>Image:</strong> http://server.local:5000/image/image.png</li>
+                </ul>
+                
+                <button class="test-button" onclick="showMessage()">Test JavaScript Function</button>
+            </div>
+            
+            <div class="image-section">
+                <h3>Image Loaded from External Server</h3>
+                <div class="image-container">
+                    <img id="displayed-image" src="http://server.local:5000/image/image.png" alt="Sample Image" />
+                </div>
+                <p><em>Click the image to test JavaScript interaction!</em></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Load JavaScript from external server (server.py) -->
+    <script src="http://server.local:5000/js/app.js"></script>
+    
+    <!-- Additional script for this page -->
+    <script>
+        console.log('Badguy server loaded!');
+        console.log('Resources fetched from server.py at server.local:5000');
+    </script>
+</body>
+</html>
+

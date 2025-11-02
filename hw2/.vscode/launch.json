@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python Debugger: Python File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}"
+        },
+        {
+            "name": "Server",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/server.py"
+        },
+        {
+            "name": "Badguy",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/badguy.py"
+        },
+        {
+            "name": "Goodguy",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/goodguy.py"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "All Servers",
+            "configurations": ["Server", "Badguy", "Goodguy"],
+            "stopAll": true
+        }
+    ]
+}
